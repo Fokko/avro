@@ -279,7 +279,7 @@
                 <exclude>**/*.iml</exclude>
                 <exclude>lang/csharp/Avro.sln</exclude> <!-- visual studio -->
                 <!-- build-related files -->
-                <exclude>BUILD.txt</exclude>
+                <exclude>BUILD.md</exclude>
                 <exclude>**/VERSION.txt</exclude>
                 <exclude>**/dependency-reduced-pom.xml</exclude>
                 <exclude>lang/perl/.shipit</exclude>
@@ -298,6 +298,7 @@
                 <exclude>lang/csharp/TestResult.xml</exclude>
                 <exclude>lang/csharp/src/apache/*/obj/**/*.csproj.FilesWrittenAbsolute.txt</exclude>
                 <exclude>lang/js/coverage/**</exclude>
+                <exclude>.dockerignore</exclude>
                 <!-- text documentation files -->
                 <exclude>CHANGES.txt</exclude>
                 <exclude>DIST_README.txt</exclude>
