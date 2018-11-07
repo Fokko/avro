@@ -50,7 +50,7 @@ do
       (cd lang/py; ./build.sh test)
       (cd lang/py3; ./build.sh test)
       (cd lang/c; ./build.sh test)
-      #(cd lang/c++; ./build.sh test)
+      (cd lang/c++; ./build.sh test)
       (cd lang/csharp; ./build.sh test)
       (cd lang/js; ./build.sh test)
       (cd lang/ruby; ./build.sh test)
@@ -59,7 +59,7 @@ do
 
       (cd lang/py; ant interop-data-generate)
       (cd lang/c; ./build.sh interop-data-generate)
-      #(cd lang/c++; make interop-data-generate)
+      (cd lang/c++; make interop-data-generate)
       (cd lang/ruby; rake generate_interop)
       (cd lang/php; ./build.sh interop-data-generate)
 
@@ -67,7 +67,7 @@ do
       (cd lang/java; mvn -B test -P interop-data-test)
       (cd lang/py; ant interop-data-test)
       (cd lang/c; ./build.sh interop-data-test)
-      #(cd lang/c++; make interop-data-test)
+      (cd lang/c++; make interop-data-test)
       (cd lang/ruby; rake interop)
       (cd lang/php; ./build.sh test-interop)
 
