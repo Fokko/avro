@@ -79,7 +79,7 @@
     <javacc-plugin.version>2.6</javacc-plugin.version>
     <javadoc-plugin.version>2.10.4</javadoc-plugin.version>
     <plugin-tools-javadoc.version>3.5</plugin-tools-javadoc.version>
-    <maven-site-plugin.version>3.6</maven-site-plugin.version>
+    <maven-site-plugin.version>3.7.1</maven-site-plugin.version>
     <plugin-plugin.version>3.5</plugin-plugin.version>
     <source-plugin.version>2.4</source-plugin.version>
     <surefire-plugin.version>2.19.1</surefire-plugin.version>
