@@ -160,7 +160,7 @@
               <rules>
                 <bannedDependencies>
                   <excludes>
-                    <exclude>com.google.code.findbugs:jsr305</exclude> <!-- GPL -->
+                    <exclude>com.google.code.findmaven-site-plugin:jsr305</exclude> <!-- GPL -->
                   </excludes>
                 </bannedDependencies>
               </rules>
@@ -261,13 +261,6 @@
       <groupId>net.sf.jopt-simple</groupId>
       <artifactId>jopt-simple</artifactId>
     </dependency>
-    <dependency>
-      <groupId>com.github.stephenc.findbugs</groupId>
-      <artifactId>findbugs-annotations</artifactId>
-      <version>${findbugs-annotations.version}</version>
-    </dependency>
   </dependencies>
-
-
 </project>
 
