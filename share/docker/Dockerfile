@@ -31,7 +31,7 @@ RUN apt-get -qq update && \
   apt-get -qq install software-properties-common apt-transport-https -y && \
   curl https://packages.sury.org/php/apt.gpg | apt-key add - && \
   echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list && \
-  apt-key adv --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF && \
+  apt-key adv --no-tty --keyserver hkp://keyserver.ubuntu.com:80 --recv-keys 3FA7E0328081BFF6A14DA29AA6A19B38D3D831EF && \
   echo "deb https://download.mono-project.com/repo/debian stable-stretch main" | tee /etc/apt/sources.list.d/mono-official-stable.list && \
   apt-get -qq update && \
   apt-get -qq install --no-install-recommends -y \
