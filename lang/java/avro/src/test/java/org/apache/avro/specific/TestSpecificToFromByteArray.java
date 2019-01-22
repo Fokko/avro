@@ -27,10 +27,6 @@ import org.apache.avro.Conversions;
 import org.apache.avro.LogicalTypes;
 import org.apache.avro.data.TimeConversions;
 import org.apache.avro.message.MissingSchemaException;
-import org.joda.time.DateTime;
-import org.joda.time.DateTimeZone;
-import org.joda.time.LocalDate;
-import org.joda.time.LocalTime;
 import org.junit.Test;
 
 public class TestSpecificToFromByteArray {

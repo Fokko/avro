@@ -37,7 +37,7 @@ import java.util.Set;
 import org.apache.avro.Conversion;
 import org.apache.avro.Conversions;
 import org.apache.avro.LogicalTypes;
-import org.apache.avro.data.Jsr310TimeConversions;
+import org.apache.avro.data.TimeConversions;
 import org.apache.avro.data.TimeConversions;
 import org.apache.avro.specific.SpecificData;
 
@@ -88,29 +88,6 @@ public class SpecificCompiler {
     PUBLIC, PUBLIC_DEPRECATED, PRIVATE
   }
 
-  public enum DateTimeLogicalTypeImplementation {
-    JODA {
-      @Override
-      void addLogicalTypeConversions(SpecificData specificData) {
-        specificData.addLogicalTypeConversion(new TimeConversions.DateConversion());
-        specificData.addLogicalTypeConversion(new TimeConversions.TimeConversion());
-        specificData.addLogicalTypeConversion(new TimeConversions.TimestampConversion());
-      }
-    },
-    JSR310 {
-      @Override
-      void addLogicalTypeConversions(SpecificData specificData) {
-        specificData.addLogicalTypeConversion(new Jsr310TimeConversions.DateConversion());
-        specificData.addLogicalTypeConversion(new Jsr310TimeConversions.TimeMillisConversion());
-        specificData.addLogicalTypeConversion(new Jsr310TimeConversions.TimestampMillisConversion());
-      }
-    };
-
-    public static final DateTimeLogicalTypeImplementation DEFAULT = JODA;
-
-    abstract void addLogicalTypeConversions(SpecificData specificData);
-  }
-
   private final SpecificData specificData = new SpecificData();
 
   private final Set<Schema> queue = new HashSet<>();
@@ -124,7 +101,6 @@ public class SpecificCompiler {
   private boolean createAllArgsConstructor = true;
   private String outputCharacterEncoding;
   private boolean enableDecimalLogicalType = false;
-  private final DateTimeLogicalTypeImplementation dateTimeLogicalTypeImplementation;
   private String suffix = ".java";
 
   /*
@@ -160,11 +136,7 @@ public class SpecificCompiler {
       " */\n";
 
   public SpecificCompiler(Protocol protocol) {
-    this(protocol, DateTimeLogicalTypeImplementation.JODA);
-  }
-
-  public SpecificCompiler(Protocol protocol, DateTimeLogicalTypeImplementation dateTimeLogicalTypeImplementation) {
-    this(dateTimeLogicalTypeImplementation);
+    this();
     // enqueue all types
     for (Schema s : protocol.getTypes()) {
       enqueue(s);
@@ -173,7 +145,7 @@ public class SpecificCompiler {
   }
 
   public SpecificCompiler(Schema schema) {
-    this(schema, DateTimeLogicalTypeImplementation.JODA);
+    this(schema, DateTimeLogicalTypeImplementation.JSR310);
   }
 
   public SpecificCompiler(Schema schema, DateTimeLogicalTypeImplementation dateTimeLogicalTypeImplementation) {
@@ -183,23 +155,9 @@ public class SpecificCompiler {
   }
 
   /**
-   * Creates a specific compiler with the default (Joda) type for date/time related logical types.
-   *
-   * @see #SpecificCompiler(DateTimeLogicalTypeImplementation)
+   * Creates a specific compiler with the given type.
    */
   SpecificCompiler() {
-    this(DateTimeLogicalTypeImplementation.JODA);
-  }
-
-  /**
-   * Creates a specific compiler with the given type to use for date/time related logical types.
-   * Use {@link DateTimeLogicalTypeImplementation#JODA} to generate Joda Time classes, use {@link DateTimeLogicalTypeImplementation#JSR310}
-   * to generate {@code java.time.*} classes for the date/time local types.
-   *
-   * @param dateTimeLogicalTypeImplementation the types used for date/time related logical types
-   */
-  SpecificCompiler(DateTimeLogicalTypeImplementation dateTimeLogicalTypeImplementation) {
-    this.dateTimeLogicalTypeImplementation = dateTimeLogicalTypeImplementation;
     this.templateDir =
       System.getProperty("org.apache.avro.specific.templates",
                          "/org/apache/avro/compiler/specific/templates/java/classic/");
@@ -289,10 +247,6 @@ public class SpecificCompiler {
     this.enableDecimalLogicalType = enableDecimalLogicalType;
   }
 
-  public DateTimeLogicalTypeImplementation getDateTimeLogicalTypeImplementation() {
-    return dateTimeLogicalTypeImplementation;
-  }
-
   public void addCustomConversion(Class<?> conversionClass) {
     try {
       final Conversion<?> conversion = (Conversion<?>)conversionClass.newInstance();
@@ -378,7 +332,9 @@ public class SpecificCompiler {
   }
 
   private void initializeSpecificData() {
-    dateTimeLogicalTypeImplementation.addLogicalTypeConversions(specificData);
+    specificData.addLogicalTypeConversion(new TimeConversions.DateConversion());
+    specificData.addLogicalTypeConversion(new TimeConversions.TimeMillisConversion());
+    specificData.addLogicalTypeConversion(new TimeConversions.TimestampMillisConversion());
     specificData.addLogicalTypeConversion(new Conversions.DecimalConversion());
   }
 
@@ -453,7 +409,7 @@ public class SpecificCompiler {
 
     for (File src : srcFiles) {
       Schema schema = parser.parse(src);
-      SpecificCompiler compiler = new SpecificCompiler(schema, DateTimeLogicalTypeImplementation.JODA);
+      SpecificCompiler compiler = new SpecificCompiler(schema);
       compiler.compileToDestination(src, dest);
     }
   }

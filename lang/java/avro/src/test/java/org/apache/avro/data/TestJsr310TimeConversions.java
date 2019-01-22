@@ -22,12 +22,12 @@ import java.time.*;
 
 import org.apache.avro.LogicalTypes;
 import org.apache.avro.Schema;
-import org.apache.avro.data.Jsr310TimeConversions.*;
+import org.apache.avro.data.TimeConversions.*;
 import org.junit.Assert;
 import org.junit.BeforeClass;
 import org.junit.Test;
 
-public class TestJsr310TimeConversions {
+public class TestTimeConversions {
 
   public static Schema DATE_SCHEMA;
   public static Schema TIME_MILLIS_SCHEMA;
@@ -37,15 +37,15 @@ public class TestJsr310TimeConversions {
 
   @BeforeClass
   public static void createSchemas() {
-    TestJsr310TimeConversions.DATE_SCHEMA = LogicalTypes.date()
+    TestTimeConversions.DATE_SCHEMA = LogicalTypes.date()
         .addToSchema(Schema.create(Schema.Type.INT));
-    TestJsr310TimeConversions.TIME_MILLIS_SCHEMA = LogicalTypes.timeMillis()
+    TestTimeConversions.TIME_MILLIS_SCHEMA = LogicalTypes.timeMillis()
         .addToSchema(Schema.create(Schema.Type.INT));
-    TestJsr310TimeConversions.TIME_MICROS_SCHEMA = LogicalTypes.timeMicros()
+    TestTimeConversions.TIME_MICROS_SCHEMA = LogicalTypes.timeMicros()
         .addToSchema(Schema.create(Schema.Type.LONG));
-    TestJsr310TimeConversions.TIMESTAMP_MILLIS_SCHEMA = LogicalTypes.timestampMillis()
+    TestTimeConversions.TIMESTAMP_MILLIS_SCHEMA = LogicalTypes.timestampMillis()
         .addToSchema(Schema.create(Schema.Type.LONG));
-    TestJsr310TimeConversions.TIMESTAMP_MICROS_SCHEMA = LogicalTypes.timestampMicros()
+    TestTimeConversions.TIMESTAMP_MICROS_SCHEMA = LogicalTypes.timestampMicros()
         .addToSchema(Schema.create(Schema.Type.LONG));
   }
 

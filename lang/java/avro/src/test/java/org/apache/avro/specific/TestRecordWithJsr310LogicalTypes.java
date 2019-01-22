@@ -113,9 +113,9 @@ public class TestRecordWithJsr310LogicalTypes extends org.apache.avro.specific.S
   }
 
   protected static final org.apache.avro.Conversions.DecimalConversion DECIMAL_CONVERSION = new org.apache.avro.Conversions.DecimalConversion();
-  protected static final org.apache.avro.data.Jsr310TimeConversions.DateConversion DATE_CONVERSION = new org.apache.avro.data.Jsr310TimeConversions.DateConversion();
-  protected static final org.apache.avro.data.Jsr310TimeConversions.TimeMillisConversion TIME_CONVERSION = new org.apache.avro.data.Jsr310TimeConversions.TimeMillisConversion();
-  protected static final org.apache.avro.data.Jsr310TimeConversions.TimestampMillisConversion TIMESTAMP_CONVERSION = new org.apache.avro.data.Jsr310TimeConversions.TimestampMillisConversion();
+  protected static final org.apache.avro.data.TimeConversions.DateConversion DATE_CONVERSION = new org.apache.avro.data.TimeConversions.DateConversion();
+  protected static final org.apache.avro.data.TimeConversions.TimeMillisConversion TIME_CONVERSION = new org.apache.avro.data.TimeConversions.TimeMillisConversion();
+  protected static final org.apache.avro.data.TimeConversions.TimestampMillisConversion TIMESTAMP_CONVERSION = new org.apache.avro.data.TimeConversions.TimestampMillisConversion();
 
   private static final org.apache.avro.Conversion<?>[] conversions =
       new org.apache.avro.Conversion<?>[] {

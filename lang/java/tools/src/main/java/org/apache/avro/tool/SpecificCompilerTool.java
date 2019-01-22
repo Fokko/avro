@@ -32,7 +32,6 @@ import java.util.List;
 
 import org.apache.avro.Protocol;
 import org.apache.avro.Schema;
-import org.apache.avro.compiler.specific.SpecificCompiler.DateTimeLogicalTypeImplementation;
 import org.apache.avro.generic.GenericData.StringType;
 import org.apache.avro.compiler.specific.SpecificCompiler;
 
@@ -65,7 +64,6 @@ public class SpecificCompilerTool implements Tool {
 
     StringType stringType = StringType.CharSequence;
     boolean useLogicalDecimal = false;
-    Optional<DateTimeLogicalTypeImplementation> dateTimeLogicalTypeImplementation = Optional.empty();
     Optional<String> encoding = Optional.empty();
     Optional<String> templateDir = Optional.empty();
 
@@ -84,17 +82,6 @@ public class SpecificCompilerTool implements Tool {
 
     if ("-bigDecimal".equalsIgnoreCase(args.get(arg))) {
       useLogicalDecimal = true;
-      arg++;
-    }
-
-    if ("-dateTimeLogicalTypeImpl".equalsIgnoreCase(args.get(arg))) {
-      arg++;
-      try {
-        dateTimeLogicalTypeImplementation = Optional.of(DateTimeLogicalTypeImplementation.valueOf(args.get(arg).toUpperCase()));
-      } catch (IllegalArgumentException | IndexOutOfBoundsException e) {
-        System.err.println("Expected one of " + Arrays.toString(DateTimeLogicalTypeImplementation.values()));
-        return 1;
-      }
       arg++;
     }
 
@@ -117,15 +104,13 @@ public class SpecificCompilerTool implements Tool {
       Schema.Parser parser = new Schema.Parser();
       for (File src : determineInputs(inputs, SCHEMA_FILTER)) {
         Schema schema = parser.parse(src);
-        SpecificCompiler compiler = new SpecificCompiler(schema,
-          dateTimeLogicalTypeImplementation.orElse(DateTimeLogicalTypeImplementation.JODA));
+        SpecificCompiler compiler = new SpecificCompiler(schema);
         executeCompiler(compiler, encoding, stringType, useLogicalDecimal, templateDir, src, output);
       }
     } else if ("protocol".equals(method)) {
       for (File src : determineInputs(inputs, PROTOCOL_FILTER)) {
         Protocol protocol = Protocol.parse(src);
-        SpecificCompiler compiler = new SpecificCompiler(protocol,
-          dateTimeLogicalTypeImplementation.orElse(DateTimeLogicalTypeImplementation.JODA));
+        SpecificCompiler compiler = new SpecificCompiler(protocol);
         executeCompiler(compiler, encoding, stringType, useLogicalDecimal, templateDir, src, output);
       }
     } else {

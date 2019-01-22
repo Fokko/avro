@@ -43,9 +43,9 @@ public class TestRecordWithLogicalTypes extends org.apache.avro.specific.Specifi
   @Deprecated public float f32;
   @Deprecated public double f64;
   @Deprecated public java.lang.CharSequence s;
-  @Deprecated public org.joda.time.LocalDate d;
-  @Deprecated public org.joda.time.LocalTime t;
-  @Deprecated public org.joda.time.DateTime ts;
+  @Deprecated public java.time.LocalDate d;
+  @Deprecated public java.time.LocalTime t;
+  @Deprecated public java.time.DateTime ts;
   @Deprecated public BigDecimal dec;
 
   /**
@@ -64,9 +64,9 @@ public class TestRecordWithLogicalTypes extends org.apache.avro.specific.Specifi
                                     java.lang.Float f32,
                                     java.lang.Double f64,
                                     java.lang.CharSequence s,
-                                    org.joda.time.LocalDate d,
-                                    org.joda.time.LocalTime t,
-                                    org.joda.time.DateTime ts,
+                                    java.time.LocalDate d,
+                                    java.time.LocalTime t,
+                                    java.time.DateTime ts,
                                     BigDecimal dec) {
     this.b = b;
     this.i32 = i32;
@@ -107,9 +107,9 @@ public class TestRecordWithLogicalTypes extends org.apache.avro.specific.Specifi
     case 3: f32 = (java.lang.Float)value$; break;
     case 4: f64 = (java.lang.Double)value$; break;
     case 5: s = (java.lang.CharSequence)value$; break;
-    case 6: d = (org.joda.time.LocalDate)value$; break;
-    case 7: t = (org.joda.time.LocalTime)value$; break;
-    case 8: ts = (org.joda.time.DateTime)value$; break;
+    case 6: d = (java.time.LocalDate)value$; break;
+    case 7: t = (java.time.LocalTime)value$; break;
+    case 8: ts = (java.time.DateTime)value$; break;
     case 9: dec = (BigDecimal) value$; break;
     default: throw new org.apache.avro.AvroRuntimeException("Bad index");
     }
@@ -208,7 +208,7 @@ public class TestRecordWithLogicalTypes extends org.apache.avro.specific.Specifi
   /**
    * Gets the value of the 'd' field.
    */
-  public org.joda.time.LocalDate getD() {
+  public java.time.LocalDate getD() {
     return d;
   }
 
@@ -216,14 +216,14 @@ public class TestRecordWithLogicalTypes extends org.apache.avro.specific.Specifi
    * Sets the value of the 'd' field.
    * @param value the value to set.
    */
-  public void setD(org.joda.time.LocalDate value) {
+  public void setD(java.time.LocalDate value) {
     this.d = value;
   }
 
   /**
    * Gets the value of the 't' field.
    */
-  public org.joda.time.LocalTime getT() {
+  public java.time.LocalTime getT() {
     return t;
   }
 
@@ -231,14 +231,14 @@ public class TestRecordWithLogicalTypes extends org.apache.avro.specific.Specifi
    * Sets the value of the 't' field.
    * @param value the value to set.
    */
-  public void setT(org.joda.time.LocalTime value) {
+  public void setT(java.time.LocalTime value) {
     this.t = value;
   }
 
   /**
    * Gets the value of the 'ts' field.
    */
-  public org.joda.time.DateTime getTs() {
+  public java.time.DateTime getTs() {
     return ts;
   }
 
@@ -261,7 +261,7 @@ public class TestRecordWithLogicalTypes extends org.apache.avro.specific.Specifi
    * Sets the value of the 'ts' field.
    * @param value the value to set.
    */
-  public void setTs(org.joda.time.DateTime value) {
+  public void setTs(java.time.DateTime value) {
     this.ts = value;
   }
 
@@ -316,9 +316,9 @@ public class TestRecordWithLogicalTypes extends org.apache.avro.specific.Specifi
     private float f32;
     private double f64;
     private java.lang.CharSequence s;
-    private org.joda.time.LocalDate d;
-    private org.joda.time.LocalTime t;
-    private org.joda.time.DateTime ts;
+    private java.time.LocalDate d;
+    private java.time.LocalTime t;
+    private java.time.DateTime ts;
     private BigDecimal dec;
 
     /** Creates a new Builder */
@@ -624,7 +624,7 @@ public class TestRecordWithLogicalTypes extends org.apache.avro.specific.Specifi
     /**
       * Gets the value of the 'd' field.
       */
-    public org.joda.time.LocalDate getD() {
+    public java.time.LocalDate getD() {
       return d;
     }
 
@@ -632,7 +632,7 @@ public class TestRecordWithLogicalTypes extends org.apache.avro.specific.Specifi
       * Sets the value of the 'd' field.
       * @param value the value to set.
       */
-    public TestRecordWithLogicalTypes.Builder setD(org.joda.time.LocalDate value) {
+    public TestRecordWithLogicalTypes.Builder setD(java.time.LocalDate value) {
       validate(fields()[6], value);
       this.d = value;
       fieldSetFlags()[6] = true;
@@ -658,7 +658,7 @@ public class TestRecordWithLogicalTypes extends org.apache.avro.specific.Specifi
     /**
       * Gets the value of the 't' field.
       */
-    public org.joda.time.LocalTime getT() {
+    public java.time.LocalTime getT() {
       return t;
     }
 
@@ -666,7 +666,7 @@ public class TestRecordWithLogicalTypes extends org.apache.avro.specific.Specifi
       * Sets the value of the 't' field.
       * @param value the value to set.
       */
-    public TestRecordWithLogicalTypes.Builder setT(org.joda.time.LocalTime value) {
+    public TestRecordWithLogicalTypes.Builder setT(java.time.LocalTime value) {
       validate(fields()[7], value);
       this.t = value;
       fieldSetFlags()[7] = true;
@@ -692,7 +692,7 @@ public class TestRecordWithLogicalTypes extends org.apache.avro.specific.Specifi
     /**
       * Gets the value of the 'ts' field.
       */
-    public org.joda.time.DateTime getTs() {
+    public java.time.DateTime getTs() {
       return ts;
     }
 
@@ -700,7 +700,7 @@ public class TestRecordWithLogicalTypes extends org.apache.avro.specific.Specifi
       * Sets the value of the 'ts' field.
       * @param value the value to set.
       */
-    public TestRecordWithLogicalTypes.Builder setTs(org.joda.time.DateTime value) {
+    public TestRecordWithLogicalTypes.Builder setTs(java.time.DateTime value) {
       validate(fields()[8], value);
       this.ts = value;
       fieldSetFlags()[8] = true;
@@ -767,9 +767,9 @@ public class TestRecordWithLogicalTypes extends org.apache.avro.specific.Specifi
         record.f32 = fieldSetFlags()[3] ? this.f32 : (java.lang.Float) defaultValue(fields()[3]);
         record.f64 = fieldSetFlags()[4] ? this.f64 : (java.lang.Double) defaultValue(fields()[4]);
         record.s = fieldSetFlags()[5] ? this.s : (java.lang.CharSequence) defaultValue(fields()[5]);
-        record.d = fieldSetFlags()[6] ? this.d : (org.joda.time.LocalDate) defaultValue(fields()[6]);
-        record.t = fieldSetFlags()[7] ? this.t : (org.joda.time.LocalTime) defaultValue(fields()[7]);
-        record.ts = fieldSetFlags()[8] ? this.ts : (org.joda.time.DateTime) defaultValue(fields()[8]);
+        record.d = fieldSetFlags()[6] ? this.d : (java.time.LocalDate) defaultValue(fields()[6]);
+        record.t = fieldSetFlags()[7] ? this.t : (java.time.LocalTime) defaultValue(fields()[7]);
+        record.ts = fieldSetFlags()[8] ? this.ts : (java.time.DateTime) defaultValue(fields()[8]);
         record.dec = fieldSetFlags()[9] ? this.dec : (BigDecimal) defaultValue(fields()[9]);
         return record;
       } catch (Exception e) {

@@ -19,7 +19,7 @@
 package org.apache.avro.codegentest;
 
 import org.apache.avro.codegentest.testdata.LogicalTypesWithDefaults;
-import org.joda.time.LocalDate;
+import java.time.LocalDate;
 import org.junit.Assert;
 import org.junit.Test;
 
