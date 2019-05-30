@@ -65,7 +65,7 @@
     <zstd-jni.version>1.3.8-6</zstd-jni.version>
 
     <!-- version properties for plugins -->
-    <archetype-plugin.version>3.0.1</archetype-plugin.version>
+    <archetype-plugin.version>3.1.0</archetype-plugin.version>
     <bundle-plugin-version>4.1.0</bundle-plugin-version>
     <compiler-plugin.version>3.8.0</compiler-plugin.version>
     <exec-plugin.version>1.6.0</exec-plugin.version>
