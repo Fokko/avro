@@ -298,7 +298,7 @@ UserSpecificDocker
       ;;
 
     rat)
-      mvn test -Dmaven.main.skip=true -Dmaven.test.skip=true -DskipTests=true -P rat -pl :avro-toplevel
+      mvn apache-rat:check -Drat.consoleOutput=true
       ;;
 
     githooks)
